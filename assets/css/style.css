@@ -1,0 +1,34 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 55% 90%;
+    background-position: right bottom;
+    background-color: black;
+}
+
+h1 {
+	font-family: 'Monoton', cursive;
+	color: red;
+	text-align: right;
+}
+
+h2 {
+	font-family: 'Roboto Mono', monospace;
+    color: white;	
+}
+
+.buttonBorder {
+    border: 1px solid green;
+}
+
+.characters {
+    width: 100px;
+    height: 100px;
+}
+
+.enemies {
+    color: red;
+        border: 1px solid red;
+
+}
