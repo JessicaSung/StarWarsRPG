@@ -19,7 +19,7 @@ for (var i = 0; i < characters.length; i++) {
 	b.attr('hp', characters[i].hp);
 	b.attr('ap', characters[i].ap);
 	b.attr('ca', characters[i].ca);
-	b.append("<p>" + characters[i].name + "</p><br><img src='" + characters[i].img + "' class='characterImage'><br><p>HP: " + characters[i].hp + "</p>");
+	b.append("<p>" + characters[i].name + "</p><br><img src='" + characters[i].img + "' class='characterImage'><br><p class='hpDisplay'>HP: " + characters[i].hp + "</p>");
 	$('#allCharacters').append(b);
 }
 
@@ -47,7 +47,19 @@ $(document).on('click', '.possibleEnemies', function() {
 });
 
 
-
+// Attack button functionality
+$(document).on('click', '#attack', function() {
+	// player damages defender
+	var playerAP = $('#yourCharacter').children().attr('ap');
+	console.log(playerAP);
+	var defenderHP = $('#defender').children().attr('hp');
+	console.log(defenderHP);
+	defenderHP -= playerAP;
+	console.log(defenderHP);
+	$('#defender').children().attr('hp', defenderHP);
+	console.log($('#defender').children().attr('hp'));
+	$('.hpDisplay').text("HP: " + defenderHP);
+});
 
 
 
