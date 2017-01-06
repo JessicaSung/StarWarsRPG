@@ -24,20 +24,27 @@ for (var i = 0; i < characters.length; i++) {
 }
 
 
-// choosing player and opponent
+// choose player
 $(document).on('click', '.characterButton', function() {
 	if (!playerIsChosen) {
 		// save the character name of a button clicked to a variable
-		var playerName = $(this).attr('name');
-		console.log(this);
-		console.log(playerName);
+		var player = $(this);
+		player.addClass('player');
+		$('#yourCharacter').append(player);
+		playerIsChosen = true;
+		$('#availableEnemies').append($('#allCharacters').children().addClass('possibleEnemies'));
 	}
-	
-	console.log("you clicked a character.");
 });
 
 
-
+// choose defender
+$(document).on('click', '.possibleEnemies', function() {
+	if (!enemyIsChosen) {
+		var defender = $(this);
+		$('#defender').append(defender);
+		enemyIsChosen = true;		
+	}
+});
 
 
 
