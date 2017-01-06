@@ -51,14 +51,16 @@ $(document).on('click', '.possibleEnemies', function() {
 $(document).on('click', '#attack', function() {
 	// player damages defender
 	var playerAP = $('#yourCharacter').children().attr('ap');
-	console.log(playerAP);
 	var defenderHP = $('#defender').children().attr('hp');
-	console.log(defenderHP);
 	defenderHP -= playerAP;
-	console.log(defenderHP);
 	$('#defender').children().attr('hp', defenderHP);
-	console.log($('#defender').children().attr('hp'));
 	$('#defender .hpDisplay').text("HP: " + defenderHP);
+	// defender counter attacks player
+	var defenderCA = $('#defender').children().attr('ca');
+	var playerHP = $('#yourCharacter').children().attr('hp');
+	playerHP -= defenderCA;
+	$('#yourCharacter').children().attr('hp', playerHP);
+	$('#yourCharacter .hpDisplay').text("HP: " + playerHP);
 });
 
 
