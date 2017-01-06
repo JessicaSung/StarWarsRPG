@@ -1,9 +1,9 @@
 body {
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/background.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 55% 90%;
-    background-position: right bottom;
+/*    background-size: 55% 90%;*/
+    background-position: right;
     background-color: black;
 }
 h1 {
@@ -30,4 +30,5 @@ h2 {
 #gameText {
     font-family: 'Roboto Mono', monospace;
     color: red;
+    font-size: 24px;
 }

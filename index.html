@@ -12,33 +12,40 @@
 </head>
 <body>
 	<div class="container">
-		<header>
-			<h1>Star Wars RPG!</h1>
-		</header>
+		<div class="row">
+			<header>
+				<h1>Star Wars RPG!</h1>
+			</header>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">		
+				<!-- character starting area -->
+				<div id="allCharacters"></div>
 
-		<!-- character starting area -->
-		<div id="allCharacters"></div>
+				<!-- player area -->
+				<h2>Your Character</h2>
+				<div id="yourCharacter"></div>
 
-		<!-- player area -->
-		<h2>Your Character</h2>
-		<div id="yourCharacter"></div>
+				<!-- available opponents -->
+				<h2>Enemies Available To Attack</h2>
+				<div id="availableEnemies"></div>
 
-		<!-- available opponents -->
-		<h2>Enemies Available To Attack</h2>
-		<div id="availableEnemies"></div>
+				<!-- defender area -->
+				<h2>Defender</h2>
+				<div id="defender"></div>
+			</div>
 
-		<!-- fight section -->
-		<h2>Fight Section</h2>
-		<!-- attack button -->
-		<button type="button" class="btn btn-default" id="attack">Attack</button>
+			<div class="col-md-6">
+				<!-- fight section -->
+				<h2>Fight Section</h2>
+				<!-- attack button -->
+				<button type="button" class="btn btn-default" id="attack">Attack</button>
 
-		<!-- defender area -->
-		<h2>Defender</h2>
-		<div id="defender"></div>
-
-		<!-- game text -->
-		<p id="gameText"></p>
-	
+				<!-- game text -->
+				<p id="gameText"></p>
+			</div>
+		</div>
 	</div>
 
 	<!-- jQuery cdn -->
