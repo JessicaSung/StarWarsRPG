@@ -58,7 +58,7 @@ $(document).on('click', '#attack', function() {
 	console.log(defenderHP);
 	$('#defender').children().attr('hp', defenderHP);
 	console.log($('#defender').children().attr('hp'));
-	$('.hpDisplay').text("HP: " + defenderHP);
+	$('#defender .hpDisplay').text("HP: " + defenderHP);
 });
 
 
