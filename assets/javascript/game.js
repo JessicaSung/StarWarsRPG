@@ -11,7 +11,7 @@ var characters = [
 var playerIsChosen = false;
 var enemyIsChosen = false;
 
-// Displaying characters on the page
+// Display characters on the page
 for (var i = 0; i < characters.length; i++) {
 	var b = $('<button>');
 	b.addClass('characterButton');
@@ -19,15 +19,15 @@ for (var i = 0; i < characters.length; i++) {
 	b.attr('hp', characters[i].hp);
 	b.attr('ap', characters[i].ap);
 	b.attr('ca', characters[i].ca);
-	b.append("<p>" + characters[i].name + "</p><br><img src='" + characters[i].img + "' class='characterImage'><br><p class='hpDisplay'>HP: " + characters[i].hp + "</p>");
+	b.append("<p>" + characters[i].name + "</p><img src='" + characters[i].img + "' class='characterImage'><br><p class='hpDisplay'>HP: " + characters[i].hp + "</p>");
 	$('#allCharacters').append(b);
 }
 
 
-// choose player
+// Choose player
 $(document).on('click', '.characterButton', function() {
 	if (!playerIsChosen) {
-		// save the character name of a button clicked to a variable
+		$('#gameText').empty();		
 		var player = $(this);
 		player.addClass('player');
 		$('#yourCharacter').append(player);
@@ -37,9 +37,10 @@ $(document).on('click', '.characterButton', function() {
 });
 
 
-// choose defender
+// Choose defender
 $(document).on('click', '.possibleEnemies', function() {
 	if (!enemyIsChosen) {
+		$('#gameText').empty();
 		var defender = $(this);
 		$('#defender').append(defender);
 		enemyIsChosen = true;		
@@ -49,18 +50,53 @@ $(document).on('click', '.possibleEnemies', function() {
 
 // Attack button functionality
 $(document).on('click', '#attack', function() {
-	// player damages defender
-	var playerAP = $('#yourCharacter').children().attr('ap');
-	var defenderHP = $('#defender').children().attr('hp');
-	defenderHP -= playerAP;
-	$('#defender').children().attr('hp', defenderHP);
-	$('#defender .hpDisplay').text("HP: " + defenderHP);
-	// defender counter attacks player
-	var defenderCA = $('#defender').children().attr('ca');
-	var playerHP = $('#yourCharacter').children().attr('hp');
-	playerHP -= defenderCA;
-	$('#yourCharacter').children().attr('hp', playerHP);
-	$('#yourCharacter .hpDisplay').text("HP: " + playerHP);
+	if (playerIsChosen && enemyIsChosen) {
+		$('#gameText').empty();	
+		// player damages defender
+		var playerAP = $('#yourCharacter').children().attr('ap');
+		var defenderHP = $('#defender').children().attr('hp');
+		defenderHP -= playerAP;
+		$('#defender').children().attr('hp', defenderHP);
+		$('#defender .hpDisplay').text("HP: " + defenderHP);
+		// defender counter attacks player
+		var defenderCA = $('#defender').children().attr('ca');
+		var playerHP = $('#yourCharacter').children().attr('hp');
+		playerHP -= defenderCA;
+		$('#yourCharacter').children().attr('hp', playerHP);
+		$('#yourCharacter .hpDisplay').text("HP: " + playerHP);
+		// defender hp = 0 or less, remove and choose new defender
+		if (defenderHP <= 0) {
+			$('#defender').empty();
+			enemyIsChosen = false;
+			// ask user to choose another enemy
+		}
+		// player wins by defeating all defenders
+		if ($('#availableEnemies').children().length == 0 && playerIsChosen) {
+			var p = $('<p>');
+			p.append('Good job, you won!');
+			$('#gameText').append(p);
+			// restart button
+		}
+		// player loses by when hp = 0 or less
+		if (playerHP <= 0) {
+			$('#gameText').empty();
+			var p = $('<p>');
+			p.append('You have been defeated...GAME OVER!');
+			$('#gameText').append(p);
+			// restart button
+		}
+	} else if (playerIsChosen && !enemyIsChosen && $('#availableEnemies').children().length > 0) {
+		$('#gameText').empty();
+		var p = $('<p>');
+		p.append('Please choose an enemy to fight!');
+		$('#gameText').append(p);
+	} else if (!playerIsChosen) {
+		$('#gameText').empty();
+		var p = $('<p>');
+		p.append('Please choose your character.');
+		$('#gameText').append(p);
+	}
+
 });
 
 

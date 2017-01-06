@@ -6,29 +6,28 @@ body {
     background-position: right bottom;
     background-color: black;
 }
-
 h1 {
 	font-family: 'Monoton', cursive;
 	color: red;
 	text-align: right;
 }
-
 h2 {
 	font-family: 'Roboto Mono', monospace;
     color: white;	
 }
-
 .buttonBorder {
     border: 1px solid green;
 }
-
 .characterImage {
     width: 100px;
     height: 100px;
 }
-
 .enemies {
     color: red;
-        border: 1px solid red;
+    border: 1px solid red;
 
+}
+#gameText {
+    font-family: 'Roboto Mono', monospace;
+    color: red;
 }
