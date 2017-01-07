@@ -11,7 +11,7 @@ var characters = [
 var playerIsChosen = false;
 var enemyIsChosen = false;
 
-// Display characters on the page
+// Display characters on the page 
 function start() {
 	$('.display').hide();
 	for (var i = 0; i < characters.length; i++) {
@@ -27,6 +27,13 @@ function start() {
 	var p = $('<p>');
 	p.append('Choose your character.');
 	$('#gameText').append(p);
+}
+
+// Restart the game
+function restart() {
+	playerIsChosen = false;
+	enemyIsChosen = false;
+
 }
 
 // Choose player
@@ -84,23 +91,38 @@ $(document).on('click', '#attack', function() {
 		$('#yourCharacter').children().attr('ap', playerAP);
 		// defender hp = 0 or less, remove and choose new defender
 		if (defenderHP <= 0) {
+			$('#gameText').empty();
 			$('#defender').empty();
 			enemyIsChosen = false;
+			var p = $('<p>');
+			p.append('You have defeated ' + defenderName + '. Who will you challenge next?');
+			$('#gameText').append(p);
 		}
 		// player wins by defeating all defenders
 		if ($('#availableEnemies').children().length == 0 && $('#defender').children().length == 0 && playerIsChosen ) {
+			$('#gameText').empty();
 			var p = $('<p>');
 			p.append('Good job, you won!');
-			$('#gameText').append(p);
 			// restart button
+			var br = $('<br>');
+			p.append(br);
+			var b = $('<button>Restart</button>');
+			b.addClass('btn btn-danger raised restart');
+			p.append(b);
+			$('#gameText').append(p);
 		}
 		// player loses by when hp = 0 or less
 		if (playerHP <= 0) {
 			$('#gameText').empty();
 			var p = $('<p>');
 			p.append('You have been defeated...GAME OVER!');
-			$('#gameText').append(p);
 			// restart button
+			var br = $('<br>');
+			p.append(br);
+			var b = $('<button>Restart</button>');
+			b.addClass('btn btn-danger raised restart');
+			p.append(b);
+			$('#gameText').append(p);
 		}
 	// player is chosen, defender is not chosen, there are enemies available
 	} else if (playerIsChosen && !enemyIsChosen && $('#availableEnemies').children().length > 0) {
