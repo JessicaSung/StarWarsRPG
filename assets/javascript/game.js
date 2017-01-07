@@ -104,6 +104,7 @@ $(document).on('click', '#attack', function() {
 		// player wins by defeating all defenders
 		if ($('#availableEnemies').children().length == 0 && $('#defender').children().length == 0 && playerIsChosen ) {
 			$('#gameText').empty();
+			$('#attack').hide();
 			var p = $('<p>');
 			p.append('Good job, you won!');
 			// restart button
@@ -117,6 +118,7 @@ $(document).on('click', '#attack', function() {
 		// player loses by when hp = 0 or less
 		if (playerHP <= 0) {
 			$('#gameText').empty();
+			$('#attack').hide();
 			var p = $('<p>');
 			p.append('You have been defeated...GAME OVER!');
 			// restart button
