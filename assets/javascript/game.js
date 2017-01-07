@@ -60,6 +60,7 @@ $(document).on('click', '.possibleEnemies', function() {
 
 // Attack button functionality
 $(document).on('click', '#attack', function() {
+	var playerName = $('#yourCharacter').children().attr('name');
 	var playerHP = $('#yourCharacter').children().attr('hp');	
 	var playerAP = $('#yourCharacter').children().attr('ap');
 	var defenderName = $('#defender').children().attr('name');
@@ -80,8 +81,17 @@ $(document).on('click', '#attack', function() {
 		p.append("You attacked " + defenderName + " for " + playerAP + " damage.<br>" + defenderName + " attacked you back for " + defenderCA + " damage.");
 		$('#gameText').append(p);
 		// increment player's AP by player's Base AP
-		playerAP = parseInt(playerAP) + parseInt(playerAP);
-		$('#yourCharacter').children().attr('ap', playerAP);
+		// ===============================================
+		if ($('#yourCharacter').children().length > 0 && $('#defender').children().length > 0 && playerHP > 0) {
+			for (var i = 0; i < characters.length; i++) {
+				if (characters[i].name == playerName) {
+					var basePlayerAP = characters[i].ap;
+				}				 
+			}
+			playerAP = parseInt(playerAP) + parseInt(basePlayerAP);
+			$('#yourCharacter').children().attr('ap', playerAP);
+			console.log(playerAP);
+		}
 		// defender hp = 0 or less, remove and choose new defender
 		if (defenderHP <= 0) {
 			$('#gameText').empty();
