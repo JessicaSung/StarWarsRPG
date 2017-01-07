@@ -3,10 +3,10 @@ $(document).ready(function(){
 // VARIABLES
 // ===============================================
 var characters = [
-	{name: 'Obi-Wan Kenobi', img: 'assets/images/obiwan.jpg', hp: 120, ap: 11, ca: 15},
-	{name: 'Luke Skywalker', img: 'assets/images/luke.png', hp: 100, ap: 13, ca: 9},
-	{name: 'Darth Sidious', img: 'assets/images/sideous.jpg', hp: 150, ap: 8, ca: 15},
-	{name: 'Darth Maul', img: 'assets/images/maul.jpg', hp: 180, ap: 5, ca: 20}
+	{name: 'Obi-Wan Kenobi', img: 'assets/images/obiwan.jpg', hp: 120, ap: 11, ca: 11},
+	{name: 'Luke Skywalker', img: 'assets/images/luke.png', hp: 100, ap: 13, ca: 15},
+	{name: 'Darth Sidious', img: 'assets/images/sideous.jpg', hp: 150, ap: 8, ca: 10},
+	{name: 'Darth Maul', img: 'assets/images/maul.jpg', hp: 180, ap: 5, ca: 8}
 ];
 var playerIsChosen = false;
 var enemyIsChosen = false;
