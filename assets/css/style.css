@@ -14,12 +14,30 @@ h2 {
 	font-family: 'Roboto Mono', monospace;
     color: white;	
 }
+.characterButton {
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+}
 .characterImage {
     width: 100px;
     height: 100px;
+}
+.defenderButton {
+    background-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+    color: white;
 }
 #gameText {
     font-family: 'Roboto Mono', monospace;
     color: red;
     font-size: 24px;
+}
+.possibleEnemies {
+    background-color: red;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
 }

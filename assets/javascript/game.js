@@ -50,6 +50,7 @@ $(document).on('click', '.possibleEnemies', function() {
 	if (!enemyIsChosen) {
 		$('#gameText').empty();
 		var defender = $(this);
+		defender.addClass('defenderButton').removeClass('possibleEnemies');
 		$('#defender').append(defender);
 		enemyIsChosen = true;
 		var p = $('<p>');
