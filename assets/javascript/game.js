@@ -13,6 +13,7 @@ var enemyIsChosen = false;
 
 // Display characters on the page
 function start() {
+	$('.display').hide();
 	for (var i = 0; i < characters.length; i++) {
 		var b = $('<button>');
 		b.addClass('characterButton');
@@ -24,7 +25,7 @@ function start() {
 		$('#allCharacters').append(b);
 	}
 	var p = $('<p>');
-	p.append('Choose a character to start.');
+	p.append('Choose your character.');
 	$('#gameText').append(p);
 }
 
@@ -33,12 +34,16 @@ function start() {
 // Choose player
 $(document).on('click', '.characterButton', function() {
 	if (!playerIsChosen) {
-		$('#gameText').empty();		
+		$('#gameText').empty();
+		$('.display').show();
 		var player = $(this);
 		player.addClass('player');
 		$('#yourCharacter').append(player);
 		playerIsChosen = true;
 		$('#availableEnemies').append($('#allCharacters').children().addClass('possibleEnemies'));
+		var p = $('<p>');
+		p.append('Choose your opponent.');
+		$('#gameText').append(p);
 	}
 });
 
@@ -49,7 +54,10 @@ $(document).on('click', '.possibleEnemies', function() {
 		$('#gameText').empty();
 		var defender = $(this);
 		$('#defender').append(defender);
-		enemyIsChosen = true;		
+		enemyIsChosen = true;
+		var p = $('<p>');
+		p.append('CHARGE!!! Attack!');
+		$('#gameText').append(p);	
 	}
 });
 
@@ -107,7 +115,6 @@ $(document).on('click', '#attack', function() {
 		p.append('Please choose your character!');
 		$('#gameText').append(p);
 	}
-
 });
 
 
