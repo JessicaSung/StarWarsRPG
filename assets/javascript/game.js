@@ -29,8 +29,6 @@ function start() {
 	$('#gameText').append(p);
 }
 
-
-
 // Choose player
 $(document).on('click', '.characterButton', function() {
 	if (!playerIsChosen) {
@@ -47,7 +45,6 @@ $(document).on('click', '.characterButton', function() {
 	}
 });
 
-
 // Choose defender
 $(document).on('click', '.possibleEnemies', function() {
 	if (!enemyIsChosen) {
@@ -60,7 +57,6 @@ $(document).on('click', '.possibleEnemies', function() {
 		$('#gameText').append(p);	
 	}
 });
-
 
 // Attack button functionality
 $(document).on('click', '#attack', function() {
@@ -83,6 +79,9 @@ $(document).on('click', '#attack', function() {
 		var p = $('<p>');
 		p.append("You attacked " + defenderName + " for " + playerAP + " damage.<br>" + defenderName + " attacked you back for " + defenderCA + " damage.");
 		$('#gameText').append(p);
+		// increment player's AP by player's Base AP
+		playerAP = parseInt(playerAP) + parseInt(playerAP);
+		$('#yourCharacter').children().attr('ap', playerAP);
 		// defender hp = 0 or less, remove and choose new defender
 		if (defenderHP <= 0) {
 			$('#defender').empty();
@@ -116,9 +115,6 @@ $(document).on('click', '#attack', function() {
 		$('#gameText').append(p);
 	}
 });
-
-
-
 
 start();
 });
