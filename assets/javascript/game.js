@@ -56,10 +56,11 @@ $(document).on('click', '.possibleEnemies', function() {
 
 // Attack button functionality
 $(document).on('click', '#attack', function() {
+	var playerHP = $('#yourCharacter').children().attr('hp');	
 	var playerAP = $('#yourCharacter').children().attr('ap');
+	var defenderName = $('#defender').children().attr('name');
 	var defenderHP = $('#defender').children().attr('hp');
 	var defenderCA = $('#defender').children().attr('ca');
-	var playerHP = $('#yourCharacter').children().attr('hp');
 	// player and defender are both chosen
 	if (playerIsChosen && enemyIsChosen && playerHP > 0) {
 		$('#gameText').empty();	
@@ -71,11 +72,13 @@ $(document).on('click', '#attack', function() {
 		playerHP -= defenderCA;
 		$('#yourCharacter').children().attr('hp', playerHP);
 		$('#yourCharacter .hpDisplay').text("HP: " + playerHP);
+		var p = $('<p>');
+		p.append("You attacked " + defenderName + " for " + playerAP + " damage.<br>" + defenderName + " attacked you back for " + defenderCA + " damage.");
+		$('#gameText').append(p);
 		// defender hp = 0 or less, remove and choose new defender
 		if (defenderHP <= 0) {
 			$('#defender').empty();
 			enemyIsChosen = false;
-			// ask user to choose another enemy
 		}
 		// player wins by defeating all defenders
 		if ($('#availableEnemies').children().length == 0 && $('#defender').children().length == 0 && playerIsChosen ) {
