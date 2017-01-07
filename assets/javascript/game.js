@@ -29,13 +29,6 @@ function start() {
 	$('#gameText').append(p);
 }
 
-// Restart the game
-function restart() {
-	playerIsChosen = false;
-	enemyIsChosen = false;
-
-}
-
 // Choose player
 $(document).on('click', '.characterButton', function() {
 	if (!playerIsChosen) {
@@ -137,6 +130,16 @@ $(document).on('click', '#attack', function() {
 		$('#gameText').append(p);
 	}
 });
+
+// Restart button functionality
+$(document).on('click', '.restart', function() {
+	playerIsChosen = false;
+	enemyIsChosen = false;
+	$('#gameText').empty();
+	$('#yourCharacter').empty();
+	start();
+});
+
 
 start();
 });
