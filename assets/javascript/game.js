@@ -147,6 +147,7 @@ $(document).on('click', '.restart', function() {
 	enemyIsChosen = false;
 	$('#gameText').empty();
 	$('#yourCharacter').empty();
+	$('#defender').empty();
 	start();
 });
 
